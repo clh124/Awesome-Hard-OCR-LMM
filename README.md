@@ -24,6 +24,8 @@ Unlike general OCR, document AI, or broad MLLM benchmark lists, this collection 
 
 ---
 
+<a id="contents"></a>
+
 ## Contents
 
 - [Introduction](#introduction)
@@ -37,6 +39,8 @@ Unlike general OCR, document AI, or broad MLLM benchmark lists, this collection 
 - [Contact Us](#contact-us)
 
 ---
+
+<a id="introduction"></a>
 
 ## ✨ Introduction
 
@@ -73,6 +77,8 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 
 ---
 
+<a id="benchmarks-datasets"></a>
+
 ## 📊 Benchmarks & Datasets
 
 | Benchmark | Paper | Venue & Year | Highlights | Tags | Download |
@@ -103,7 +109,11 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 
 ---
 
+<a id="research-papers"></a>
+
 ## 🚀 Research Papers
+
+<a id="degraded-and-in-the-wild-ocr"></a>
 
 ### 🌍 Degraded and In-the-Wild OCR
 
@@ -118,6 +128,8 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 | VLENet | [VLENet: A Duet of Perception and Reasoning for Scene Text Recognition](https://www.sciencedirect.com/science/article/pii/S092523122502908X) | Neurocomputing 2026 | Uses CLIP visual representations and an LLM to brainstorm plausible text candidates for ambiguous scene text. | `recognition`, `degraded`, `scene-text`, `reasoning` | N/A |
 
 [[⬆️ Back to Top](#contents)]
+
+<a id="complex-document-and-structured-ocr"></a>
 
 ### 📄 Complex Document and Structured OCR
 
@@ -142,6 +154,8 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 
 [[⬆️ Back to Top](#contents)]
 
+<a id="script-diverse-historical-and-handwritten-ocr"></a>
+
 ### ✍️ Script-Diverse, Historical, and Handwritten OCR
 
 *This section treats hard OCR as recognition or OCR-centric understanding under script, writing-style, or historical-domain shift. Included papers should address at least one of the following: low-resource or non-Latin scripts, script-specific orthographic complexity, historical or ancient documents, calligraphy, handwriting, handwritten formulas, or visual decipherment of rare scripts. Ordinary modern printed OCR in high-resource scripts is out of scope unless the paper explicitly targets one of these challenges.*
@@ -161,6 +175,8 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 
 [[⬆️ Back to Top](#contents)]
 
+<a id="synthetic-hidden-and-adversarial-hard-ocr"></a>
+
 ### 🧪 Synthetic, Hidden, and Adversarial Hard OCR
 
 *This section treats hard OCR as recognizing, localizing, or robustly interpreting synthetic, hidden, illusion-based, adversarial, or manipulated visual text. Included papers should make OCR or visual-text reading a central task. General VLM attacks, jailbreaks, broad AIGC-risk detection, or synthetic image generation are out of scope unless OCR/text reading is explicitly evaluated.*
@@ -174,6 +190,8 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 [[⬆️ Back to Top](#contents)]
 
 ---
+
+<a id="competitions"></a>
 
 ## 🏆 Competitions
 
@@ -204,6 +222,9 @@ Papers may have multiple tags because hard OCR factors often overlap. Tags are g
 
 
 [[⬆️ Back to Top](#contents)]
+
+<a id="contact-us"></a>
+
 ## 📮 Contact Us
 
 If you have questions, suggestions, or would like to discuss potential collaboration, feel free to reach out:
