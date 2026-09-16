@@ -29,6 +29,7 @@
 ## 📰 更新日志
 
 - **[2026-09-09]** 新增 10 篇(3 个 benchmark/数据集、7 篇方法论文),覆盖 3 个章节:📊 Benchmarks 与数据集 +3、🌍 退化与真实世界 OCR +3、📄 复杂文档与结构化 OCR +4
+- **[2026-09-16]** 新增 24 篇(19 个 benchmark/数据集、5 篇方法论文),覆盖 6 个章节:📊 Benchmarks 与数据集 +5、🌍 退化与真实世界 OCR +2、📄 复杂文档与结构化 OCR +8、✍️ 脚本多样、历史与手写 OCR +5、🧪 合成、隐藏与对抗 Hard OCR +1、🏆 竞赛 +14
 
 *标 🆕 的条目为本次更新新增。*
 <!-- UPDATE_LOG_END -->
@@ -90,9 +91,14 @@
 
 | Benchmark | 论文 | Venue & Year | 亮点 | 标签 | 下载 |
 |---|---|---|---|---|---|
-| LongDocBench 🆕 | [LongDocBench](https://arxiv.org/abs/2608.15064v1) | arXiv 2026 | 长文档 TOC 层级与上下文关系恢复基准;85 篇文档 2,582 页,含 3,937 标题节点与 3,258 关系。 | `long-context`, `multi-page`, `layout` | N/A |
-| BanglaWild 🆕 | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | N/A |
-| ConfBench 🆕 | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | N/A |
+| EMBLEM 🆕 | [EMBLEM](https://arxiv.org/abs/2609.08330v1) | arXiv 2026 | 多脚本表格检测因英语外脚本数据稀缺而失效。作者发布 MANDALA(2,323 页,18 语种,15 种脚本),并提出 EMBLEM 掩码范式:屏蔽脚本/字体细节,让英语预训练模型聚焦版面布局。仅用英语掩码图微调即可大幅提升跨脚本表现。 | `localization`, `table`, `multilingual` | [GitHub](https://github.com/IITB-LEAP-OCR/EMBLEM.git) |
+| AtomCite 🆕 | [AtomCite](https://arxiv.org/abs/2609.05802v1) | arXiv 2026 | 多页文档问答中模型给出的页级引用常出错,但此前没有基准核验文档图像上已提供的引用。AtomCite 将答案拆为原子声明,用并行文本与图像子代理逐条对照所引页面,再按确定性策略执行修正。DocCite 基准显示图像感知验证在三族模型上全面优于 OCR-only 与提示式基线。 | `multi-page`, `document-qa`, `reasoning` | N/A |
+| KhatianDoc 🆕 | [KhatianDoc](https://arxiv.org/abs/2609.03597v1) | arXiv 2026 | 孟加拉手写地契 RS Khatian 使用 Ana-Ganda 十六进制分数系统,字体与分词器均无支持,任何 OCR 管线与多模态大模型都无法识别。KhatianDoc 基于 107 份律师校验的真实记录构建四任务基准(符号识别、十六进制算术、字段抽取、问答),零样本评测六个多模态大模型,揭示能力缺失而非性能差距,并发布脱敏数据与代码。 | `recognition`, `low-resource`, `handwriting` | [HuggingFace](https://huggingface.co/datasets/RaiyanKhaan/KhatianDoc) |
+| OCR-EDR 🆕 | [OCR-EDR](https://arxiv.org/abs/2609.03445v1) | arXiv 2026 | OCR 在公式与结构化文本上仍常错,聚合指标掩盖 case 级错误。OCR-EDR 把诊断-编辑-重渲染建成闭环;DocEDR (Qwen3.5-9B) 经 verifier SFT、课程式修复与 GRPO 三阶段训练。作者发布 OCRErrBench(900 例,含精确与渲染等价正例及真错误),并在外部公式基准上获得可验证增益。 | `recognition`, `formula`, `structured-output` | N/A |
+| LeakageBench 🆕 | [LeakageBench](https://arxiv.org/abs/2609.02207v1) | arXiv 2026 | 文档图像 PII 脱敏在 OCR 出错或版面干扰时会泄露标识符。LeakageBench 提供 500 张文档图像与 11,954 条 GDPR 对齐的 PII 标注,覆盖直接、链路与上下文三类标识符。即使最强的 OCR 流水线与 OCR-free VLM,关键页级泄漏率仍居高不下。 | `localization`, `KIE`, `recognition` | N/A |
+| LongDocBench | [LongDocBench](https://arxiv.org/abs/2608.15064v1) | arXiv 2026 | 长文档 TOC 层级与上下文关系恢复基准;85 篇文档 2,582 页,含 3,937 标题节点与 3,258 关系。 | `long-context`, `multi-page`, `layout` | N/A |
+| BanglaWild | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | N/A |
+| ConfBench | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | N/A |
 | AdvOCR | [VACoT: Rethinking Visual Data Augmentation with VLMs](https://arxiv.org/abs/2512.02361) | arXiv 2025 | 对抗 OCR benchmark，配合推理时视觉增强方法。 | `recognition`, `hidden/adversarial`, `synthetic-hard` | [HuggingFace](https://huggingface.co/datasets/SincereX/AdvOCR) |
 | AncientDoc | [Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning](https://arxiv.org/abs/2509.09731) | arXiv 2025 | 中文古籍文档 benchmark，覆盖页面级 OCR、翻译、知识 QA 和推理 QA。 | `recognition`, `historical`, `script-diverse`, `reasoning`, `translation` | [HuggingFace](https://huggingface.co/datasets/ByteDance/AncientDoc) |
 | BABMLLM | [BABMLLM: Benchmarking the Ancient Books Capability of MLLMs](https://www.nature.com/articles/s40494-025-01897-3) | npj Heritage Science 2025 | 评估 MLLM 对印刷和手写古籍的多模态处理能力。 | `recognition`, `historical`, `handwriting`, `reasoning` | N/A |
@@ -131,11 +137,13 @@
 
 | 方法/系统 | 论文 | Venue & Year | 亮点 | 标签 | 代码 |
 |---|---|---|---|---|---|
-| NaviDC-OCR 🆕 | [NaviDC-OCR](https://arxiv.org/abs/2608.12898v1) | arXiv 2026 | 针对数字与拍摄文档的统一解析框架;OmniDocBench 96.87、Wild-OmniDocBench 88.53、PureDocBench 78.41 达 SOTA。 | `structured-output`, `layout`, `table` | [GitHub](https://github.com/caipeng328/NaviDC-OCR) |
-| VTS / Prompt-Region Grounding 🆕 | [VTS / Prompt-Region Grounding](https://arxiv.org/abs/2608.04726v1) | arXiv 2026 | VTS 干预将问题移入像素;prompt-region grounding 无需 OCR 即恢复 8.3 分准确率。 | `reasoning`, `text-rich-vqa`, `localization` | - |
-| BanglaWild 🆕 | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | - |
-| ConfBench 🆕 | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | - |
-| FAU ImageCLEF 2026 🆕 | [FAU ImageCLEF 2026](https://arxiv.org/abs/2608.01664v1) | arXiv 2026 | ImageCLEF 2026 多模态推理系统;Visual MCQ 第三、Visual OpenQA 第一。 | `text-rich-vqa`, `multilingual`, `table` | - |
+| Jina-OCR-v1 🆕 | [Jina-OCR-v1](https://arxiv.org/abs/2609.03181v1) | arXiv 2026 | 端到端文档解析 VLM 在低端 GPU 上推理代价高,公式与表格结构奖励覆盖不足。Jina-OCR-v1 在 DeepSeek-OCR 压缩视觉编码器与 3B MoE 解码器上加入复用的 FastMTP 投机解码头,并结合 SFT 与基于公式/表格稠密可验证奖励的 GRPO 后训练。模型在主流解析榜单匹敌更大系统,同时在低端 GPU 保持高吞吐。 | `recognition`, `structured-output`, `table` | - |
+| DADC-DocVLM 🆕 | [DADC-DocVLM](https://arxiv.org/abs/2609.01575v1) | arXiv 2026 | 受监管行业面临文档 VLM 的成本-质量鸿沟:PII 禁用云端模型,小模型达不到质量门槛,大模型又不划算。我们在单卡 H100 上部署 MoE VLM(总 35B、激活 3B),以难度感知数据筛选流水线在 30 万 CC PDF 上微调;性能超越大一个量级的可部署基线,相较人工标注降本逾 80%。 | `KIE`, `structured-output`, `layout` | - |
+| NaviDC-OCR | [NaviDC-OCR](https://arxiv.org/abs/2608.12898v1) | arXiv 2026 | 针对数字与拍摄文档的统一解析框架;OmniDocBench 96.87、Wild-OmniDocBench 88.53、PureDocBench 78.41 达 SOTA。 | `structured-output`, `layout`, `table` | [GitHub](https://github.com/caipeng328/NaviDC-OCR) |
+| VTS / Prompt-Region Grounding | [VTS / Prompt-Region Grounding](https://arxiv.org/abs/2608.04726v1) | arXiv 2026 | VTS 干预将问题移入像素;prompt-region grounding 无需 OCR 即恢复 8.3 分准确率。 | `reasoning`, `text-rich-vqa`, `localization` | - |
+| BanglaWild | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | - |
+| ConfBench | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | - |
+| FAU ImageCLEF 2026 | [FAU ImageCLEF 2026](https://arxiv.org/abs/2608.01664v1) | arXiv 2026 | ImageCLEF 2026 多模态推理系统;Visual MCQ 第三、Visual OpenQA 第一。 | `text-rich-vqa`, `multilingual`, `table` | - |
 | CLIP4STR | [CLIP4STR: A Simple Baseline for Scene Text Recognition with Pre-trained Vision-Language Model](https://arxiv.org/abs/2305.14014) | arXiv 2023 / IEEE TIP 2024 | 将 CLIP 转化为场景文本识别器，结合视觉与跨模态分支以及 predict-and-refine 解码。 | `recognition`, `degraded`, `occlusion`, `scene-text` | [GitHub](https://github.com/VamosC/CLIP4STR) |
 | Lumos | [Lumos: Empowering Multimodal LLMs with Scene Text Recognition](https://arxiv.org/abs/2402.08017) | KDD 2024 | 将场景文本识别集成到 MM-LLM 中，用于第一人称图像 QA。 | `recognition`, `scene-text`, `in-the-wild`, `text-rich-vqa` | N/A |
 | Monkey | [Monkey: Image Resolution and Text Label Are Important Things for Large Multi-modal Models](https://arxiv.org/abs/2311.06607) | CVPR 2024 | 通过 patch 处理和多层次文本/物体描述支持更高分辨率的 LMM 输入。 | `dense-text`, `high-resolution`, `document-qa`, `scene-text` | [GitHub](https://github.com/Yuliang-Liu/Monkey) |
@@ -152,14 +160,22 @@
 
 | 方法/系统 | 论文 | Venue & Year | 亮点 | 标签 | 代码 |
 |---|---|---|---|---|---|
-| LongDocBench 🆕 | [LongDocBench](https://arxiv.org/abs/2608.15064v1) | arXiv 2026 | 长文档 TOC 层级与上下文关系恢复基准;85 篇文档 2,582 页,含 3,937 标题节点与 3,258 关系。 | `long-context`, `multi-page`, `layout` | - |
-| NaviDC-OCR 🆕 | [NaviDC-OCR](https://arxiv.org/abs/2608.12898v1) | arXiv 2026 | 针对数字与拍摄文档的统一解析框架;OmniDocBench 96.87、Wild-OmniDocBench 88.53、PureDocBench 78.41 达 SOTA。 | `structured-output`, `layout`, `table` | [GitHub](https://github.com/caipeng328/NaviDC-OCR) |
-| TongGuOCR 🆕 | [TongGuOCR](https://arxiv.org/abs/2608.07917v2) | arXiv 2026 | 面向中文历史文档的版面感知 OCR MLLM;M5HisDoc AR 93.76,显著降低 NED/RO-ED。 | `recognition`, `historical`, `layout` | [GitHub](https://github.com/jzzh2004/TongGuOCR) |
-| Q-CueGraph 🆕 | [Q-CueGraph](https://arxiv.org/abs/2608.04452v1) | arXiv 2026 | 查询条件视觉证据图,复用 OCR/版面图;V*Bench 0.833,仅用 19% 图像区域。 | `text-rich-vqa`, `layout`, `localization` | - |
-| ConfBench 🆕 | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | - |
-| FAU ImageCLEF 2026 🆕 | [FAU ImageCLEF 2026](https://arxiv.org/abs/2608.01664v1) | arXiv 2026 | ImageCLEF 2026 多模态推理系统;Visual MCQ 第三、Visual OpenQA 第一。 | `text-rich-vqa`, `multilingual`, `table` | - |
-| DocPO 🆕 | [DocPO](https://arxiv.org/abs/2608.00536v3) | arXiv 2026 | 文档策略优化框架,步感知退火奖励覆盖文本/表格/公式;在 OmniDocBench 与 DocElemHard 提升 GRPO。 | `structured-output`, `table`, `formula` | - |
-| HierDoc 🆕 | [HierDoc](https://arxiv.org/abs/2607.29638v1) | arXiv 2026 | 分层页到区证据路由框架,两阶段集合预测配 GRPO;LongDocURL 相对提升 16.87%。 | `multi-page`, `long-context`, `document-qa` | - |
+| EMBLEM 🆕 | [EMBLEM](https://arxiv.org/abs/2609.08330v1) | arXiv 2026 | 多脚本表格检测因英语外脚本数据稀缺而失效。作者发布 MANDALA(2,323 页,18 语种,15 种脚本),并提出 EMBLEM 掩码范式:屏蔽脚本/字体细节,让英语预训练模型聚焦版面布局。仅用英语掩码图微调即可大幅提升跨脚本表现。 | `localization`, `table`, `multilingual` | [GitHub](https://github.com/IITB-LEAP-OCR/EMBLEM.git) |
+| AtomCite 🆕 | [AtomCite](https://arxiv.org/abs/2609.05802v1) | arXiv 2026 | 多页文档问答中模型给出的页级引用常出错,但此前没有基准核验文档图像上已提供的引用。AtomCite 将答案拆为原子声明,用并行文本与图像子代理逐条对照所引页面,再按确定性策略执行修正。DocCite 基准显示图像感知验证在三族模型上全面优于 OCR-only 与提示式基线。 | `multi-page`, `document-qa`, `reasoning` | - |
+| Full-Page OMR 🆕 | [Full-Page OMR](https://arxiv.org/abs/2609.05662v1) | arXiv 2026 | 面向排版乐谱训练的全页 OMR Transformer 在手写单声部手稿上失效。作者构建可同时生成排版与手写风格的全页乐谱合成器,在三个真实手写语料上比较 Sheet Music Transformer 与分割式、展开式管线。SMT 表现最佳,且排版预训练可匹敌手写预训练,说明结构性版面约定比视觉相似度更关键。 | `formula`, `handwriting`, `layout` | - |
+| KhatianDoc 🆕 | [KhatianDoc](https://arxiv.org/abs/2609.03597v1) | arXiv 2026 | 孟加拉手写地契 RS Khatian 使用 Ana-Ganda 十六进制分数系统,字体与分词器均无支持,任何 OCR 管线与多模态大模型都无法识别。KhatianDoc 基于 107 份律师校验的真实记录构建四任务基准(符号识别、十六进制算术、字段抽取、问答),零样本评测六个多模态大模型,揭示能力缺失而非性能差距,并发布脱敏数据与代码。 | `recognition`, `low-resource`, `handwriting` | - |
+| OCR-EDR 🆕 | [OCR-EDR](https://arxiv.org/abs/2609.03445v1) | arXiv 2026 | OCR 在公式与结构化文本上仍常错,聚合指标掩盖 case 级错误。OCR-EDR 把诊断-编辑-重渲染建成闭环;DocEDR (Qwen3.5-9B) 经 verifier SFT、课程式修复与 GRPO 三阶段训练。作者发布 OCRErrBench(900 例,含精确与渲染等价正例及真错误),并在外部公式基准上获得可验证增益。 | `recognition`, `formula`, `structured-output` | - |
+| Jina-OCR-v1 🆕 | [Jina-OCR-v1](https://arxiv.org/abs/2609.03181v1) | arXiv 2026 | 端到端文档解析 VLM 在低端 GPU 上推理代价高,公式与表格结构奖励覆盖不足。Jina-OCR-v1 在 DeepSeek-OCR 压缩视觉编码器与 3B MoE 解码器上加入复用的 FastMTP 投机解码头,并结合 SFT 与基于公式/表格稠密可验证奖励的 GRPO 后训练。模型在主流解析榜单匹敌更大系统,同时在低端 GPU 保持高吞吐。 | `recognition`, `structured-output`, `table` | - |
+| LeakageBench 🆕 | [LeakageBench](https://arxiv.org/abs/2609.02207v1) | arXiv 2026 | 文档图像 PII 脱敏在 OCR 出错或版面干扰时会泄露标识符。LeakageBench 提供 500 张文档图像与 11,954 条 GDPR 对齐的 PII 标注,覆盖直接、链路与上下文三类标识符。即使最强的 OCR 流水线与 OCR-free VLM,关键页级泄漏率仍居高不下。 | `localization`, `KIE`, `recognition` | - |
+| DADC-DocVLM 🆕 | [DADC-DocVLM](https://arxiv.org/abs/2609.01575v1) | arXiv 2026 | 受监管行业面临文档 VLM 的成本-质量鸿沟:PII 禁用云端模型,小模型达不到质量门槛,大模型又不划算。我们在单卡 H100 上部署 MoE VLM(总 35B、激活 3B),以难度感知数据筛选流水线在 30 万 CC PDF 上微调;性能超越大一个量级的可部署基线,相较人工标注降本逾 80%。 | `KIE`, `structured-output`, `layout` | - |
+| LongDocBench | [LongDocBench](https://arxiv.org/abs/2608.15064v1) | arXiv 2026 | 长文档 TOC 层级与上下文关系恢复基准;85 篇文档 2,582 页,含 3,937 标题节点与 3,258 关系。 | `long-context`, `multi-page`, `layout` | - |
+| NaviDC-OCR | [NaviDC-OCR](https://arxiv.org/abs/2608.12898v1) | arXiv 2026 | 针对数字与拍摄文档的统一解析框架;OmniDocBench 96.87、Wild-OmniDocBench 88.53、PureDocBench 78.41 达 SOTA。 | `structured-output`, `layout`, `table` | [GitHub](https://github.com/caipeng328/NaviDC-OCR) |
+| TongGuOCR | [TongGuOCR](https://arxiv.org/abs/2608.07917v2) | arXiv 2026 | 面向中文历史文档的版面感知 OCR MLLM;M5HisDoc AR 93.76,显著降低 NED/RO-ED。 | `recognition`, `historical`, `layout` | [GitHub](https://github.com/jzzh2004/TongGuOCR) |
+| Q-CueGraph | [Q-CueGraph](https://arxiv.org/abs/2608.04452v1) | arXiv 2026 | 查询条件视觉证据图,复用 OCR/版面图;V*Bench 0.833,仅用 19% 图像区域。 | `text-rich-vqa`, `layout`, `localization` | - |
+| ConfBench | [ConfBench](https://arxiv.org/abs/2608.01792v1) | arXiv 2026 | 首个面向 KIE 的校准基准;20 条受控退化管线,1346 变体,70K+ 实体评测。 | `KIE`, `degraded`, `dense-text` | - |
+| FAU ImageCLEF 2026 | [FAU ImageCLEF 2026](https://arxiv.org/abs/2608.01664v1) | arXiv 2026 | ImageCLEF 2026 多模态推理系统;Visual MCQ 第三、Visual OpenQA 第一。 | `text-rich-vqa`, `multilingual`, `table` | - |
+| DocPO | [DocPO](https://arxiv.org/abs/2608.00536v3) | arXiv 2026 | 文档策略优化框架,步感知退火奖励覆盖文本/表格/公式;在 OmniDocBench 与 DocElemHard 提升 GRPO。 | `structured-output`, `table`, `formula` | - |
+| HierDoc | [HierDoc](https://arxiv.org/abs/2607.29638v1) | arXiv 2026 | 分层页到区证据路由框架,两阶段集合预测配 GRPO;LongDocURL 相对提升 16.87%。 | `multi-page`, `long-context`, `document-qa` | - |
 | DeepSeek-OCR | [DeepSeek-OCR: Contexts Optical Compression](https://arxiv.org/abs/2510.18234) | arXiv 2025 | 面向长文本上下文的光学二维映射与视觉压缩。 | `recognition`, `dense-text`, `long-context` | [GitHub](https://github.com/deepseek-ai/DeepSeek-OCR) |
 | GLM-OCR | [GLM-OCR Technical Report](https://arxiv.org/abs/2603.10910) | arXiv 2026 | 采用两阶段 layout-to-recognition pipeline 的紧凑多模态 OCR 模型。 | `recognition`, `layout`, `formula`, `KIE` | [GitHub](https://github.com/zai-org/GLM-OCR) |
 | GOT-OCR2.0 | [GOT-OCR2.0: General OCR Theory](https://arxiv.org/abs/2409.01704) | arXiv 2024 | 统一端到端 OCR-2.0 模型，处理文本、公式、表格、图表、乐谱和几何图形。 | `recognition`, `structured-output`, `formula`, `table/chart` | [GitHub](https://github.com/Ucas-HaoranWei/GOT-OCR2.0) |
@@ -185,8 +201,13 @@
 
 | 方法/系统 | 论文 | Venue & Year | 亮点 | 标签 | 代码 |
 |---|---|---|---|---|---|
-| TongGuOCR 🆕 | [TongGuOCR](https://arxiv.org/abs/2608.07917v2) | arXiv 2026 | 面向中文历史文档的版面感知 OCR MLLM;M5HisDoc AR 93.76,显著降低 NED/RO-ED。 | `recognition`, `historical`, `layout` | [GitHub](https://github.com/jzzh2004/TongGuOCR) |
-| BanglaWild 🆕 | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | - |
+| Manchu Synth-Real OCR 🆕 | [Manchu Synth-Real OCR](https://arxiv.org/abs/2609.11495v1) | arXiv 2026 | 仅在合成满文词图上训练的 VLM 在真实清代档案上精度受限。作者比较三种 VLM 与一个紧凑 CRNN 在四种合成-真实训练策略下的表现。真实历史图像显著提升档案识别精度,紧凑 CRNN 不逊于大型 VLM,而基于 18 世纪满文字典的投票纠错无需再训练即带来增益。 | `recognition`, `historical`, `low-resource` | - |
+| EMBLEM 🆕 | [EMBLEM](https://arxiv.org/abs/2609.08330v1) | arXiv 2026 | 多脚本表格检测因英语外脚本数据稀缺而失效。作者发布 MANDALA(2,323 页,18 语种,15 种脚本),并提出 EMBLEM 掩码范式:屏蔽脚本/字体细节,让英语预训练模型聚焦版面布局。仅用英语掩码图微调即可大幅提升跨脚本表现。 | `localization`, `table`, `multilingual` | [GitHub](https://github.com/IITB-LEAP-OCR/EMBLEM.git) |
+| Full-Page OMR 🆕 | [Full-Page OMR](https://arxiv.org/abs/2609.05662v1) | arXiv 2026 | 面向排版乐谱训练的全页 OMR Transformer 在手写单声部手稿上失效。作者构建可同时生成排版与手写风格的全页乐谱合成器,在三个真实手写语料上比较 Sheet Music Transformer 与分割式、展开式管线。SMT 表现最佳,且排版预训练可匹敌手写预训练,说明结构性版面约定比视觉相似度更关键。 | `formula`, `handwriting`, `layout` | - |
+| KhatianDoc 🆕 | [KhatianDoc](https://arxiv.org/abs/2609.03597v1) | arXiv 2026 | 孟加拉手写地契 RS Khatian 使用 Ana-Ganda 十六进制分数系统,字体与分词器均无支持,任何 OCR 管线与多模态大模型都无法识别。KhatianDoc 基于 107 份律师校验的真实记录构建四任务基准(符号识别、十六进制算术、字段抽取、问答),零样本评测六个多模态大模型,揭示能力缺失而非性能差距,并发布脱敏数据与代码。 | `recognition`, `low-resource`, `handwriting` | - |
+| Wayu-Paxa-OCR-Zero 🆕 | [Wayu-Paxa-OCR-Zero](https://arxiv.org/abs/2609.03595v1) | arXiv 2026 | 泰文 OCR 因非拉丁脚本与真实标签稀缺而受限。作者构建受控合成数据重建流水线,解耦源域、字体多样性、二维版面与字形差异以研究合成→真实迁移规律。Wayu-Paxa-OCR-Zero 仅用合成页微调 0.9B PaddleOCR-VL,即可媲美或超越更大参数量的泰文 OCR。 | `recognition`, `synthetic-hard`, `low-resource` | - |
+| TongGuOCR | [TongGuOCR](https://arxiv.org/abs/2608.07917v2) | arXiv 2026 | 面向中文历史文档的版面感知 OCR MLLM;M5HisDoc AR 93.76,显著降低 NED/RO-ED。 | `recognition`, `historical`, `layout` | [GitHub](https://github.com/jzzh2004/TongGuOCR) |
+| BanglaWild | [BanglaWild](https://arxiv.org/abs/2608.03884v1) | arXiv 2026 | 提出 BanglaWild,2535 张真实场景孟加拉语文字基准;评测 15 个 VLM 与 3 个 OCR 系统,给出 15 类错误分类。 | `recognition`, `scene-text`, `in-the-wild` | - |
 | Baseer | [Baseer: An Arabic Vision-Language Model for Document-to-Markdown OCR](https://arxiv.org/abs/2509.18174) | arXiv 2025 | 阿拉伯语 document-to-Markdown OCR VLM，使用合成和真实阿拉伯文档微调。 | `recognition`, `multilingual`, `structured-output`, `layout` | N/A |
 | CHURRO | [CHURRO: Making History Readable with an Open-Weight Large Vision-Language Model for High-Accuracy, Low-Cost Historical Text Recognition](https://arxiv.org/abs/2509.19768) | EMNLP 2025 | 高精度、低成本的开源权重历史文本识别 VLM。 | `recognition`, `historical`, `handwriting`, `multilingual` | [GitHub](https://github.com/stanford-oval/Churro) |
 | CalliReader | [CalliReader: Contextualizing Chinese Calligraphy via Embedding-Aligned Vision-Language Model](https://arxiv.org/abs/2503.06472) | ICCV 2025 | 基于 embedding alignment 的 VLM，用于整页中文书法识别与解释。 | `recognition`, `historical`, `script-diverse`, `reasoning` | [GitHub](https://github.com/LoYuXr/CalliReader) |
@@ -208,6 +229,7 @@
 
 | 方法/系统 | 论文 | Venue & Year | 亮点 | 标签 | 代码 |
 |---|---|---|---|---|---|
+| Wayu-Paxa-OCR-Zero 🆕 | [Wayu-Paxa-OCR-Zero](https://arxiv.org/abs/2609.03595v1) | arXiv 2026 | 泰文 OCR 因非拉丁脚本与真实标签稀缺而受限。作者构建受控合成数据重建流水线,解耦源域、字体多样性、二维版面与字形差异以研究合成→真实迁移规律。Wayu-Paxa-OCR-Zero 仅用合成页微调 0.9B PaddleOCR-VL,即可媲美或超越更大参数量的泰文 OCR。 | `recognition`, `synthetic-hard`, `low-resource` | - |
 | SemVink | [SemVink: Advancing VLMs' Semantic Understanding of Optical Illusions via Visual Global Thinking](https://aclanthology.org/2025.emnlp-main.1381/) | EMNLP 2025 | 使用视觉全局思考策略，如低分辨率缩放，提升隐藏/错觉内容感知。 | `hidden/adversarial`, `recognition` | [GitHub](https://github.com/johnnyZeppelin/vlm-semvink) |
 | VACoT | [VACoT: Rethinking Visual Data Augmentation with VLMs](https://arxiv.org/abs/2512.02361) | arXiv 2025 | 推理时 VLM 视觉增强方法，包含 crop、denoise、enhance 和工具选择，用于困难感知和对抗 OCR。 | `hidden/adversarial`, `synthetic-hard`, `recognition` | N/A |
 | AIGuard | [AIGuard: A Benchmark and Lightweight Detection for E-commerce AIGC Risks](https://aclanthology.org/2025.findings-acl.643/) | ACL Findings 2025 | 检测电商图像中的 AIGC 风险内容，包括隐藏或问题视觉文本相关场景。 | `synthetic-hard`, `hidden/adversarial`, `in-the-wild` | [GitHub](https://github.com/wenh-zhang/aiguard-dataset) |
@@ -222,6 +244,20 @@
 
 | 竞赛 | Venue / Platform & Year | 亮点 | 链接 |
 |---|---|---|---|
+| URA Hackathon 2026 🆕 | Kaggle 2026 | 社交媒体图片中的文字与产品名难以自动识别。URA Hackathon 2026(Kaggle)以社交媒体图文字识别与产品名抽取为赛道,Kaggle 榜单打分。赛事发布数据集并产出基线,推动真实场景 OCR 与信息抽取评测。 | [Kaggle](https://www.kaggle.com/competitions/the-2nd-ura-hackathon) |
+| KyrgyzANPR 🆕 | Kaggle 2026 | 车牌识别在资源稀缺与多变成像条件下挑战较大。该 Kaggle 赛事要求选手构建吉尔吉斯车牌 OCR 模型,在真实未控场景下经留出榜单评测排名。 | [Kaggle](https://www.kaggle.com/competitions/kyrgyz-anpr-kyrgyz-license-plate-recognition-challenge) |
+| StreetSmart Challenge 🆕 | Kaggle 2026 | 真实街景同时包含视觉内容与嵌入文字,行人需读图并对其中 OCR 文字推理以回答实际问题。StreetSmart 挑战赛要求模型读取街景、对 OCR 文字推理,准确回答真实世界行人问题。Kaggle 榜单据此 OCR 引导的街景推理能力对系统排名。 | [Kaggle](https://www.kaggle.com/competitions/street-smart-challenge) |
+| Vignette OCR 🆕 | Kaggle 2025 | 药房药品贴纸(vignette)承载小而密的安全关键文本。赛事设双重挑战:先定位并识别贴纸文字,再逐字段抽取直至有效期。提供数据集与榜单,覆盖从定位到信息检索的完整链路。 | [Kaggle](https://www.kaggle.com/competitions/vignette-ocr) |
+| VRD-IU 2025 🆕 | AAAI 2025 Competition | 视觉富文档(VRD)的智能理解是 Document AI 的核心目标。AAAI-25 榜单赛聚焦 VRD 版面分析与结构解析。提供持续性榜单基准,用于评测文档结构理解方法。 | [Kaggle](https://www.kaggle.com/competitions/aaai-25-visually-rich-document-vrd-iu-leaderboard) |
+| CMMHWR26 🆕 | ICDAR 2026 Competition | ICDAR 2026 赛事评测中世纪手稿的九语种多语言手写文本识别,设三档递进任务:多语言识别、同语系未见语言泛化、跨语系泛化。采用屏蔽测试集评分,产出榜单对比各 HTR 系统在语言泛化轴上的表现。 | [Competition Website](https://cmmhwr26.inria.fr) |
+| TROGS-26 🆕 | ICDAR 2026 Competition | 古希腊铭文 OCR 通常通过纸拓拓本采集,面临光照变化与罕被现代系统覆盖的历史脚本。TROGS-26 发布 224 份带标注拓本,在两种正交光照下采集共 448 张图像(PageXML 标注),以转录字符错误率排名,产出历史希腊文 OCR 基准数据集与公开榜单。 | [Competition Website](https://www.science.smith.edu/~nhowe/contest/trogs26.html) |
+| Sci-ImageMiner 🆕 | ICDAR 2026 Competition | 原子层沉积/刻蚀场景的科学图含稠密定量信息,难以自动化复用。Sci-ImageMiner(ICDAR 2026)对真实 XPS 谱、相图等开展分类、结构化抽取、摘要与可视化问答,2026 年 3 月公开盲测集。赛事产出榜单与数据集,推动材料科学图理解评测发展。 | [Competition Website](https://sites.google.com/view/sci-imageminer/) |
+| DocVQA 2026 🆕 | ICDAR 2026 Competition | DocVQA 2026 延续文档视觉问答竞赛,在 8 个领域以超越简单抽取的题型评测多模态推理:空间理解(地图、工程图、版面)、时间理解(漫画故事)、以及结合文本、表格与图的多跳答案。评测服务器接收提交并据此对系统排名。 | [Competition Website](https://www.docvqa.org/challenges/2026) |
+| HIPE-OCRepair 2026 🆕 | ICDAR 2026 Competition | ICDAR 2026 赛事聚焦多语言多领域历史文档的 LLM 辅助 OCR 纠错。参赛者在固定评测阶段对屏蔽测试集进行 OCR 结果纠错,结果于维也纳 ICDAR 2026 公布,对比各 LLM 纠错方案在历史文本上的效果。 | [Competition Website](https://hipe-eval.github.io/HIPE-OCRepair-2026/) |
+| DocVQA 2026 🆕 | ICDAR 2026 Competition | DocVQA 系列在 2026 年扩展为覆盖 8 个领域的文档多模态推理赛事。题目超越简单抽取,考察空间与时序理解(地图、漫画)以及跨文本、表格、插图的多跳推理。赛事提供评测数据集与榜单,检验高阶文档理解能力。 | [RRC Page](https://rrc.cvc.uab.es/?ch=34) |
+| Seal Title 2023 🆕 | ICDAR 2023 Competition | 印章标题文字在公文与金融场景随处可见,却长期被成熟 OCR 技术忽视。任务需在多样印章形状、弯曲文本、背景噪声与文字重叠下读出印章文字。赛事提供专门的基准数据与榜单,推动这一 hard OCR 场景的研究。 | [RRC Page](https://rrc.cvc.uab.es/?ch=20) |
+| SVRD 2023 🆕 | ICDAR 2023 Competition | 视觉富文档的结构化文本抽取是 Document AI 核心方向,但既有基准场景有限、且只评测流水线子模块。SVRD 赛事设两条赛道推进端到端抽取,并提供针对完整方案的基准与榜单。 | [RRC Page](https://rrc.cvc.uab.es/?ch=21) |
+| NewsVideoQA 2023 🆕 | ICDAR 2023 Competition | 视频中文字的识别与跟踪长期是文档分析社区的难题。NewsVideoQA 首次在新闻视频上开展文本视频问答,系统需跨多帧读取文本并综合作答。赛事提供连接视频文字读取与问答的基准。 | [RRC Page](https://rrc.cvc.uab.es/?ch=24) |
 | DataMFM Challenge: Document Parsing + Chart Understanding | CVPR Workshop 2026 | 针对自然文本、表格、公式、版面和图表的结构化文档解析与图表理解 | [Challenge Website](https://datamfm.github.io/challenge.html) |
 | Handwritten to Data: Ukrainian OCR | Kaggle 2026 | 乌克兰语手写文本识别，适合追踪低资源手写 OCR | [Kaggle / News](https://nahornyi.ai/ru/news/kaggle-handwritten-to-data-ukr-ocr) |
 | HTR: Handwritten Text Recognition and Understanding | ICDAR 2025 | 历史手写文本识别，并包含文档级理解赛道 | [Competition Website](https://prhlt-carabela.prhlt.upv.es/ICDAR25HTRU/) |
